@@ -7,28 +7,31 @@
   <title>Array insertion</title>
   <script>
     let arr = [1, 2, 33, 4, 0, 98, 66, 34, 11, 23, 54, 98, 61];
-    let ele = 99;
-    let postion = 5;
+    // let ele = 99;
+    // let postion = 1;
 
-    document.write(arr.length + "<br>");
-    document.write(arr, "<br>");
-
-    function insertElement(arr, ele, postion) {
-      for (let i = arr.length; i >= postion; i--) {
-        arr[i] = arr[i - 1];
-        if (i === postion) {
-          arr[i] = ele;
-        }
+    function insertElement() {
+      const ele = parseInt(document.getElementById('ele').value);
+      const position = parseInt(document.getElementById('postion').value);
+      if (isNaN(ele) || isNaN(position) || position < 0 || position > arr.length) {
+        document.getElementById('output').innerHTML = 'Invalid input or position.';
+        return;
       }
+      // Shift elements to the right
+      for (let i = arr.length; i > position; i--) {
+        arr[i] = arr[i - 1];
+      }
+      arr[position] = ele;
+      document.getElementById('output').innerHTML = 'Array after insertion: ' + arr.join(', ');
     }
-
-    insertElement(arr, ele, postion);
-    document.write(arr)
   </script>
 </head>
 
 <body>
-
+  <input type="text" placeholder="Enter a number" id="ele">
+  <input type="text" placeholder="Enter position" id="postion">
+  <button onclick="insertElement()">Insert</button>
+  <div id="output"></div>
 </body>
 
 </html>
