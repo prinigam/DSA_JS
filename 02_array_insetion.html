@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array insertion</title>
+  <script>
+    let arr = [1, 2, 33, 4, 0, 98, 66, 34, 11, 23, 54, 98, 61];
+    let ele = 99;
+    let postion = 5;
+
+    document.write(arr.length + "<br>");
+    document.write(arr, "<br>");
+
+    function insertElement(arr, ele, postion) {
+      for (let i = arr.length; i >= postion; i--) {
+        arr[i] = arr[i - 1];
+        if (i === postion) {
+          arr[i] = ele;
+        }
+      }
+    }
+
+    insertElement(arr, ele, postion);
+    document.write(arr)
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
